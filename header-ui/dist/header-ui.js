@@ -356,10 +356,12 @@ module.exports = invariant;
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".Header-module__nav___YCIXU{background:linear-gradient(to right, #e9e9e9 0%, #dddddd 100%);color:#fff;display:flex;justify-content:space-between;padding:1rem;border-radius:2rem}.Header-module__nav___YCIXU .Header-module__multiplyBtn___1EODf{color:#00008b;background:#fff;outline:none;border:none;border-radius:1rem;padding:.5rem 1rem;cursor:pointer}", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, ".Header-module__nav___YCIXU{background:linear-gradient(to right, #e9e9e9 0%, #dddddd 100%);color:#646464;display:flex;justify-content:space-between;padding:1rem;border-radius:2rem}.Header-module__brand___-0Q6\\+{transition:transform .3s ease}.Header-module__brand___-0Q6\\+:hover{transform:scale(1.1)}.Header-module__navLink___oV6Oc{margin:0 10px;font-weight:500;position:relative;transition:color .3s ease;color:#585858}.Header-module__navLink___oV6Oc::after{content:\"\";position:absolute;width:100%;height:2px;bottom:0;left:0;background-color:#4e4e4e;transform:scaleX(0);transition:transform .1s ease-in-out}.Header-module__navLink___oV6Oc:hover{color:#585858 !important}.Header-module__navLink___oV6Oc:hover::after{transform:scaleX(1)}.Header-module__multiplyBtn___1EODf{color:#00008b;background:#fff;outline:none;border:none;border-radius:1rem;padding:.5rem 1rem;cursor:pointer;transition:transform .3s ease-in-out}.Header-module__multiplyBtn___1EODf:hover{transform:translateY(-3px);box-shadow:0 4px 8px #fff}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"nav": "Header-module__nav___YCIXU",
+	"brand": "Header-module__brand___-0Q6+",
+	"navLink": "Header-module__navLink___oV6Oc",
 	"multiplyBtn": "Header-module__multiplyBtn___1EODf"
 };
 /* harmony default export */ __webpack_exports__["a"] = (___CSS_LOADER_EXPORT___);
@@ -5150,11 +5152,13 @@ var Header_Header = function Header(props) {
   var _ref = props || {},
     multiplyByTen = _ref.multiplyByTen;
   return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement(esm_Navbar, {
-    bg: "light",
+    bg: "dark",
+    variant: "dark",
     expand: "lg",
-    className: components_Header_module.nav
+    className: "".concat(components_Header_module.nav, " py-3")
   }, /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement(esm_Container, null, /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement(esm_Navbar.Brand, {
-    href: "#home"
+    href: "#home",
+    className: components_Header_module.brand
   }, /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement("img", {
     src: logo,
     height: "40",
@@ -5166,12 +5170,14 @@ var Header_Header = function Header(props) {
     id: "basic-navbar-nav"
   }, /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement(react_bootstrap_esm_Nav, {
     className: "me-auto"
-  }, /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement(react_bootstrap_esm_Nav.Link, {
-    href: "#home"
-  }, "Home"), /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement(react_bootstrap_esm_Nav.Link, {
-    href: "#link"
-  }, "Link")), /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement("button", {
-    className: "".concat(components_Header_module.multiplyBtn, " btn btn-primary"),
+  }, ['Search', 'Orders', 'Prescriptions', 'Account', 'Profile', 'Benefits', 'Services'].map(function (item) {
+    return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement(react_bootstrap_esm_Nav.Link, {
+      key: item,
+      href: "#".concat(item.toLowerCase()),
+      className: components_Header_module.navLink
+    }, item);
+  })), /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_React_root_React_default.a.createElement("button", {
+    className: "".concat(components_Header_module.multiplyBtn, " btn btn-outline-light"),
     onClick: multiplyByTen
   }, "Wallet X 10"))));
 };

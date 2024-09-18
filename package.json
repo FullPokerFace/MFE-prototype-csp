@@ -1,0 +1,22 @@
+{
+    "name": "mfe-prototype",
+    "version": "1.0.0",
+    "description": "Micro Frontend Prototype",
+    "license": "MIT",
+    "scripts": {
+      "build:header": "cd header-ui && yarn build",
+      "build:main": "cd main-ui && yarn build",
+      "build:wallet": "cd wallet-ui && yarn build",
+      "build:all": "concurrently \"yarn build:header\" \"yarn build:main\" \"yarn build:wallet\"",
+      "start:header": "cd header-ui && yarn start",
+      "start:main": "cd main-ui && yarn start",
+      "start:wallet": "cd wallet-ui && yarn start",
+      "start:all": "concurrently \"yarn start:header\" \"yarn start:main\" \"yarn start:wallet\""
+    },
+    "devDependencies": {
+      "concurrently": "^6.5.1"
+    },
+    "engines": {
+      "node": ">=16.0.0"
+    }
+  }
