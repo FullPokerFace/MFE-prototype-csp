@@ -1,0 +1,15 @@
+**/node_modules/
+
+#Ignore lock files if you decided to remove them
+*/package-lock.json
+*/yarn.lock
+
+#Ignore logs
+*.log
+Ignore .DS_Store files
+.DS_Store
+
+#Ignore editor specific files
+.vscode/
+.idea/
+"@

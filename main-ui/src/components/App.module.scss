@@ -1,0 +1,32 @@
+// App.module.scss
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .componentWrapper {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .componentLabel {
+    position: absolute;
+    top: -10px;
+    z-index: 999;
+    left: 50%;
+    background-color: #e7f1f8;
+    padding: 2px 5px;
+    font-size: 12px;
+    color: #666;
+    border-radius: 3px;
+    box-shadow: #242424 0px 0px 5px
+    px;
+  }
