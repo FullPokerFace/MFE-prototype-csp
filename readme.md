@@ -19,6 +19,11 @@ This repository demonstrates a micro frontend architecture using UMD (Universal 
    ```
 
 2. Install dependencies for the root project and all subprojects:
+
+   You can either use the step-by-step method or the quick install command for your operating system.
+
+   Step-by-step method:
+
    ```
    yarn install
    cd header-ui && yarn install
@@ -26,6 +31,28 @@ This repository demonstrates a micro frontend architecture using UMD (Universal 
    cd ../wallet-ui && yarn install
    cd ..
    ```
+
+   Quick install commands:
+
+   For Windows (CMD):
+
+   ```cmd
+   for %d in (header-ui main-ui wallet-ui .) do (cd %d && yarn install && cd ..)
+   ```
+
+   For Windows (PowerShell):
+
+   ```powershell
+   @("header-ui", "main-ui", "wallet-ui", ".") | ForEach-Object { Push-Location $_; yarn install; Pop-Location }
+   ```
+
+   For Mac/Linux (Bash):
+
+   ```bash
+   for dir in header-ui main-ui wallet-ui .; do (cd "$dir" && yarn install); done
+   ```
+
+   These quick install commands will navigate into each directory, run `yarn install`, and then return to the parent directory before moving to the next one.
 
 ## Running the Application
 
