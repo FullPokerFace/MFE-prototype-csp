@@ -15,7 +15,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "cors": "^2.8.5",
-    "framer-motion": "^11.5.4",
+    "framer-motion": "^11.5.4", 
     "react": "16.14.0",
     "react-bootstrap": "^2.10.4",
     "react-dom": "16.14.0",
