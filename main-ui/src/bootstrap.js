@@ -1,3 +1,4 @@
+import('./bootstrap');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -7,8 +8,8 @@ import createStore from './redux/store';
 
 const renderApp = async () => {
     try {
-        const { walletReducer } = await import('wallet-ui/walletReducer');
-        const { Header } = await import('header-ui/Header');
+        const { walletReducer } = await import('wallet_ui/walletReducer');
+        const { Header } = await import('header_ui/Header');
 
         const store = createStore(walletReducer);
 

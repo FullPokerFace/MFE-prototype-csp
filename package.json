@@ -11,7 +11,7 @@
       "start:header": "cd header-ui && yarn webpack serve --mode development",
       "start:main": "cd main-ui && yarn webpack serve --mode development",
       "start:wallet": "cd wallet-ui && yarn webpack serve --mode development",
-      "start:all": "concurrently \"yarn start:header\" \"yarn start:main\" \"yarn start:wallet\""
+      "start:all": "concurrently \"yarn start:header\" \"yarn start:wallet\" \"yarn start:main\""
     },
     "devDependencies": {
       "concurrently": "^6.5.1",

@@ -1,12 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: 'http://localhost:3000/'
     },
     module: {
         rules: [
@@ -37,32 +38,26 @@ module.exports = {
         ]
     },
     plugins: [
+        new ModuleFederationPlugin({
+            name: 'main_ui',
+            filename: 'remoteEntry.js',
+            remotes: {
+                wallet_ui: 'wallet_ui@http://localhost:3001/remoteEntry.js',
+                header_ui: 'header_ui@http://localhost:3002/remoteEntry.js',
+            },
+            shared: ['react', 'react-dom', 'react-redux'],
+        }),
         new HtmlWebpackPlugin({
             template: './src/index.html'
         })
     ],
     devServer: {
-        contentBase: './dist',
+        static: './dist',
         port: 3000,
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
             "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
         },
-        proxy: {
-            '/wallet-ui.js': {
-                target: 'http://localhost:3001',
-                changeOrigin: true,
-            },
-            '/header-ui.js': {
-                target: 'http://localhost:3002',
-                changeOrigin: true,
-            },
-        },
-    },
-    externals: {
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-        'react-redux': 'ReactRedux',
     },
 };
