@@ -8,13 +8,16 @@
       "build:main": "cd main-ui && yarn build",
       "build:wallet": "cd wallet-ui && yarn build",
       "build:all": "concurrently \"yarn build:header\" \"yarn build:main\" \"yarn build:wallet\"",
-      "start:header": "cd header-ui && yarn start",
-      "start:main": "cd main-ui && yarn start",
-      "start:wallet": "cd wallet-ui && yarn start",
+      "start:header": "cd header-ui && yarn webpack serve --mode development",
+      "start:main": "cd main-ui && yarn webpack serve --mode development",
+      "start:wallet": "cd wallet-ui && yarn webpack serve --mode development",
       "start:all": "concurrently \"yarn start:header\" \"yarn start:main\" \"yarn start:wallet\""
     },
     "devDependencies": {
-      "concurrently": "^6.5.1"
+      "concurrently": "^6.5.1",
+      "webpack": "^5.88.0",
+      "webpack-cli": "^5.1.4",
+      "webpack-dev-server": "^4.15.1"
     },
     "engines": {
       "node": ">=16.0.0"
