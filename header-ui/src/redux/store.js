@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import walletReducer from '../reducers/walletReducer';
-
-const rootReducer = {
-    walletReducer
-}
+import headerReducer from '../reducers/headerReducer';
 
 const store = configureStore({
-    reducer: rootReducer,
+    reducer: {
+        header: headerReducer
+    }
 });
 
 export default store;

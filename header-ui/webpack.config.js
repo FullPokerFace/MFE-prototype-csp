@@ -53,12 +53,14 @@ module.exports = {
             filename: 'remoteEntry.js',
             exposes: {
                 './Header': './src/components/Header',
-                './headerActions': './src/actions/headerActions'
+                './headerActions': './src/actions/headerActions',
+                './store': './src/redux/store'
             },
             shared: {
                 react: { singleton: true, requiredVersion: '^16.14.0' },
                 'react-dom': { singleton: true, requiredVersion: '^16.14.0' },
-                'react-redux': { singleton: true, requiredVersion: '^7.2.6' }
+                'react-redux': { singleton: true, requiredVersion: '^7.2.6' },
+                '@reduxjs/toolkit': { singleton: true, requiredVersion: '^1.9.5' }
             },
         }),
         new HtmlWebpackPlugin({
