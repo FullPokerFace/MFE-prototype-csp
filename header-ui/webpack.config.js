@@ -7,7 +7,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'header-ui.js',
-        publicPath: 'http://localhost:3002/'
+        publicPath: 'auto'
     },
     module: {
         rules: [
@@ -55,7 +55,11 @@ module.exports = {
                 './Header': './src/components/Header',
                 './headerActions': './src/actions/headerActions'
             },
-            shared: ['react', 'react-dom', 'react-redux'],
+            shared: {
+                react: { singleton: true, requiredVersion: '^16.14.0' },
+                'react-dom': { singleton: true, requiredVersion: '^16.14.0' },
+                'react-redux': { singleton: true, requiredVersion: '^7.2.6' }
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html'
