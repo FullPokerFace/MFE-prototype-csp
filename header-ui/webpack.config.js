@@ -1,22 +1,29 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
+    mode: 'development',
+    devServer: {
+        historyApiFallback: true,
+        static: path.join(__dirname, 'dist'),
+        port: 3002,
+    },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'header-ui.js',
-        publicPath: 'auto'
+        publicPath: 'auto',
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                options: {
+                    presets: ['@babel/preset-react'],
+                    plugins: ['react-refresh/babel'],
+                },
             },
             {
                 test: /\.css$/,
@@ -49,34 +56,33 @@ module.exports = {
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'header_ui',
+            name: 'csp_header_ui',
             filename: 'remoteEntry.js',
+            remotes: {
+                "csp-wallet-ui": 'csp_header_ui@http://localhost:3001/remoteEntry.js',
+            },
             exposes: {
                 './Header': './src/components/Header',
+                './Greetings': './src/components/Greetings/Greetings',
                 './headerActions': './src/actions/headerActions',
-                './store': './src/redux/store'
+                './headerReducer': './src/reducers/headerReducer'
             },
+
             shared: {
-                react: { singleton: true, requiredVersion: '^16.14.0' },
-                'react-dom': { singleton: true, requiredVersion: '^16.14.0' },
-                'react-redux': { singleton: true, requiredVersion: '^7.2.6' },
-                '@reduxjs/toolkit': { singleton: true, requiredVersion: '^1.9.5' }
+                react: { eager: true, singleton: true, requiredVersion: '^16.14.0' },
+                'react-dom': { eager: true, singleton: true, requiredVersion: '^16.14.0' },
+                'react-redux': { eager: true, singleton: true, requiredVersion: '^7.2.6' },
+                '@reduxjs/toolkit': { eager: true, singleton: true, requiredVersion: '^1.9.5' }
             },
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html'
-        })
+        }),
+        new ReactRefreshWebpackPlugin({
+            overlay: false
+        }),
     ],
     resolve: {
         extensions: ['.js', '.jsx']
     },
-    devServer: {
-        static: './dist',
-        port: 3002,
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-        }
-    }
 };

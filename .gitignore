@@ -13,3 +13,5 @@ Ignore .DS_Store files
 .vscode/
 .idea/
 "@
+.aider*
+

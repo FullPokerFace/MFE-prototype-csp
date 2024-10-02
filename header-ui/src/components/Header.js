@@ -5,6 +5,8 @@ import styles from './Header.module.scss';
 import logo from './logo.png';
 import headerActions from '../actions/headerActions';
 
+
+
 export const Header = (props) => {
     const { multiplyByTen } = props || {};
 
@@ -38,9 +40,9 @@ export const Header = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    const { money } = state.walletReducer;
+    // const { money } = state.walletReducer;
     return {
-        money
+        money: 0
     };
 };
 

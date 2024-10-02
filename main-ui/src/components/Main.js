@@ -1,16 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import styles from './App.module.scss';
+import Header from "csp-header-ui/Header";
+import Wallet from "csp-wallet-ui/Wallet";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = () => {
-    if (!walletUI.Wallet) {
-        return <div>Loading...</div>;
-    }
-
-    const { COMPANY, Wallet } = walletUI;
-    const { Header, headerActions } = headerUI;
-
+const Main = (props) => {
+    console.log(props)
     return (
         <main className={styles.container}>
             <span className={styles.componentLabel}>Main module</span>
@@ -22,7 +19,7 @@ const App = () => {
                 {Wallet && (
                     <div className={styles.componentWrapper}>
                         <span className={styles.componentLabel}>Wallet module</span>
-                        <Wallet company={COMPANY} />
+                        <Wallet company={'CSP'} />
                     </div>
                 )}
             </div>
@@ -31,8 +28,7 @@ const App = () => {
 };
 
 const mapStateToProps = (state) => ({
-    walletUI: state.walletUI,
-    headerUI: state.headerUI,
+
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Main);

@@ -1,18 +1,21 @@
 // store.js
 import { configureStore } from '@reduxjs/toolkit';
+import headerReducer from "csp-header-ui/headerReducer";
+import walletReducer from "csp-wallet-ui/walletReducer";
 import headerMiddleware from '../middleware/headerMiddleware';
 
-const createStore = (walletReducer) => {
-    const rootReducer = {
+console.log(walletReducer)
+
+
+const store = configureStore({
+    reducer: {
+        headerReducer,
         walletReducer,
-        // Your other reducers here
-    };
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(headerMiddleware),
+});
 
-    return configureStore({
-        reducer: rootReducer,
-        middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware().concat(headerMiddleware),
-    });
-};
+console.log(store.getState())
 
-export default createStore;
+export default store;

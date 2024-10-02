@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styles from './Wallet.module.scss';
 import { decrement, increment } from '../actions/walletActions';
+import Greetings from "csp-header-ui/Greetings";
 
 const ActionButton = ({ onClick, label }) => (
     <button className={styles.actionButton} onClick={onClick}>
@@ -14,6 +15,7 @@ export const Wallet = ({ money, incrementCount, decrementCount, company }) => {
 
     return (
         <div className={styles.walletContainer}>
+            <Greetings />
             <h1 className={styles.walletTitle}>{name} ({company})</h1>
             <div className={styles.balanceSection}>
                 <h2 className={styles.balanceLabel}>Current Balance:</h2>

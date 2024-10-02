@@ -1,3 +1,5 @@
+import walletActions from 'csp-wallet-ui/walletActions'
+console.log(walletActions)
 
 // headerMiddleware.js
 const headerMiddleware = store => next => action => {
@@ -6,7 +8,7 @@ const headerMiddleware = store => next => action => {
     if (action.type === 'MULTIPLY_BY_TEN') {
         // Do something when this action is dispatched
         console.log('MULTIPLY_BY_TEN action intercepted');
-        store.dispatch(walletUI.walletActions.multiplyByTenWallet())
+        store.dispatch(walletActions.multiplyByTenWallet())
 
         // You can dispatch additional actions, modify state, etc.
         // For example:
